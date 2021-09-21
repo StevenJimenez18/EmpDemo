@@ -1,4 +1,4 @@
-﻿
+﻿@inject EmployeeDemo.Services.IFormatNumber formatNumber
 
 
 <!DOCTYPE html>
@@ -12,12 +12,18 @@
 <body>
     <h1>Employee Data</h1>
     <nav>
+        <p style="color:aliceblue";>Working Link: <a href="/Employee/Index">Employees</a></p>
+        <p style="color:aliceblue";>Broken Link: @Html.ActionLink("Employees", "Index", "Employee")</p>
+       
 
-        <a href="/Employee/Index">Employees</a>
+    </nav>
 
+    <p>There are @formatNumber.GetFormattedNumber(323232) employees in the company! </p>
 
-        @Html.ActionLink( "Employees","Index","Employee")
-
+    <nav>
+        <div>
+            <a asp-action="About" asp-controller="Home">About Us</a>
+        </div>
     </nav>
 </body>
 </html>
