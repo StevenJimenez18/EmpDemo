@@ -1,0 +1,22 @@
+﻿
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>View</title>
+    <link rel="stylesheet" type="text/css" href="~/css/StyleSheet.css" />
+</head>
+<body>
+    <h1>Employee Names</h1>
+    <p>Please Select an Employee to view their details</p>
+
+    @foreach (string name in @ViewBag.Employeenames)
+    {
+        <div>
+            @Html.ActionLink(name, "Details", new { empname = name })
+        </div>
+    }
+
+</body>
+</html>
