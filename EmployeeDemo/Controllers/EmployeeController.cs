@@ -10,7 +10,7 @@ namespace EmployeeDemo.Controllers
     {
         public IActionResult Index()
         {
-            ViewBag.Employeenames = new string[] { "Elana", "Sarah", "Logan", "Nathan", "Michael" };
+            ViewBag.Employeenames = new string[] { "Elena", "Sarah", "Logan", "Nathan", "Michael" };
             return View();
         }
 
@@ -18,6 +18,11 @@ namespace EmployeeDemo.Controllers
         {
             ViewBag.Emp = empname;
             return View();
+        }
+
+        public IActionResult GetImage(string empname)
+        {
+            return File($@"\images\{empname.ToLower()}.png","image/jpg");
         }
     }
 }
