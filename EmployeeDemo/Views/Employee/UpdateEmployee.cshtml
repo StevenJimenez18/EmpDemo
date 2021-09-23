@@ -1,0 +1,34 @@
+﻿@model EmployeeDemo.Models.Employee
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>UpdateEmployee</title>
+</head>
+<body>
+    <form asp-action="UpdateEmployee" asp-controller="Employee" method="post">
+        
+        <div>
+            <label asp-for="Ename"></label>
+            <input asp-for="Ename" />
+        </div>
+        <div>
+            <label asp-for="Email"></label>
+            <input asp-for="Email" />
+        </div>
+        <div>
+            <label asp-for="Department"></label>
+            <select asp-for="Department"
+                    asp-items="Html.GetEnumSelectList<EmployeeDemo.Models.Dept>()">
+                <option value="">Please Select</option>
+            </select>
+        </div>
+        <div asp-validation-summary="All"></div>
+        <div>
+            <button type="submit">Update Employee</button>
+        </div>
+    </form>
+    <a asp-action="AllEmployees">Back to Employees</a>
+</body>
+</html>

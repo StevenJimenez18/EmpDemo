@@ -19,6 +19,7 @@ namespace EmployeeDemo
         {
             services.AddMvc(options => options.EnableEndpointRouting = false);
             services.AddSingleton<IFormatNumber,FormatNumber>();
+            services.AddSingleton<IEmployeeRepository, EmployeeRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

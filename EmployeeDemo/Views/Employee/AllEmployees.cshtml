@@ -1,0 +1,54 @@
+﻿@model IEnumerable<EmployeeDemo.Models.Employee>
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>AllEmployees</title>
+    <style>
+        table {
+            font-family: arial, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        td, th {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+        }
+
+        tr:nth-child(even) {
+            background-color: #dddddd;
+        }
+    </style>
+</head>
+<body>
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Department</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach(var emp in Model)
+            {
+                <tr>
+                    <td>@emp.Eid</td>
+                    <td>@emp.Ename</td>
+                    <td>@emp.Email</td>
+                    <td>@emp.Department</td>
+                    <td><a href="/Employee/UpdateEmployee/@emp.Eid">Update Employee</a></td>
+                    <td><a href="/Employee/DeleteEmployee/@emp.Eid">Delete Employee</a></td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    <a href="/Home/Index">Go Back</a>
+    <a href="/Employee/CreateEmployee">Create Employee</a>
+</body>
+</html>
