@@ -8,6 +8,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using EmployeeDemo.Services;
+using EmployeeDemo.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace EmployeeDemo
 {
@@ -19,12 +21,18 @@ namespace EmployeeDemo
         {
             services.AddMvc(options => options.EnableEndpointRouting = false);
             services.AddSingleton<IFormatNumber,FormatNumber>();
-            services.AddSingleton<IEmployeeRepository, EmployeeRepository>();
+            services.AddDbContext<EmployeeContext>(options => options.UseSqlServer("Server=localhost;Database=PCAD2EmployeeDB;Trusted_Connection=True;MultipleActiveResultSets=true"));
+            /*services.AddScoped<IEmployeeRepository, DBRepository>();
+            services.AddDbContext<EmployeeContext>(options => options.UseSqlite("Data Source=employee.db"));*/
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, EmployeeContext employeeContext)
         {
+
+            employeeContext.Database.EnsureDeleted();
+            employeeContext.Database.EnsureCreated();
+
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();

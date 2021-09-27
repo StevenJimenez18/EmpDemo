@@ -17,11 +17,11 @@ namespace EmployeeDemo.Models
 
     public class Employee
     {
-       
+            [Key]
             [Display(Name = "Employee Id")]
             [Required]
             public int Eid { get; set; }
-            
+
             [Required]
             [MaxLength(50,ErrorMessage ="Name cannot exceed 50 chars")]
             public string Ename { get; set; }
@@ -33,6 +33,10 @@ namespace EmployeeDemo.Models
 
             [Display(Name = "Department")]
             public Dept Department { get; set; }
+
+            //Foreign Key
+            public int DeptId { get; set; }
+            public virtual Department department{ get; set; }
 
     }
 }
