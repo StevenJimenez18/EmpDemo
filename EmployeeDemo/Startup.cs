@@ -21,7 +21,8 @@ namespace EmployeeDemo
         {
             services.AddMvc(options => options.EnableEndpointRouting = false);
             services.AddSingleton<IFormatNumber,FormatNumber>();
-            services.AddDbContext<EmployeeContext>(options => options.UseSqlServer("Server=localhost;Database=PCAD2EmployeeDB;Trusted_Connection=True;MultipleActiveResultSets=true"));
+            services.AddScoped<IEmployeeRepository, DBRepository>();
+            services.AddDbContext<EmployeeContext>(options => options.UseSqlServer("Server=localhost\\MSSQLSERVER01;Database=PCAD2EmployeeDB;Trusted_Connection=True;MultipleActiveResultSets=true"));
             /*services.AddScoped<IEmployeeRepository, DBRepository>();
             services.AddDbContext<EmployeeContext>(options => options.UseSqlite("Data Source=employee.db"));*/
         }

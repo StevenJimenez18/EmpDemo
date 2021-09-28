@@ -23,14 +23,30 @@ namespace EmployeeDemo.Services
             if (dataBaseCheck.Count == 0)
             {
                 emp.Eid = 101;
-                _employeeContext.Add(emp);
+                
             }
             if (dataBaseCheck.Count != 0)
             {
                 emp.Eid = _employeeContext.Employees.Max(emp => emp.Eid) + 1;
-                _employeeContext.Employees.Add(emp);
-            }
 
+            }
+            if (emp.Department.ToString() == "HR")
+            {
+                emp.DeptId = 1;
+            }
+            if (emp.Department.ToString() == "Finance")
+            {
+                emp.DeptId = 2;
+            }
+            if (emp.Department.ToString() == "IT")
+            {
+                emp.DeptId = 3;
+            }
+            if (emp.Department.ToString() == "QA")
+            {
+                emp.DeptId = 4;
+            }
+            _employeeContext.Employees.Add(emp);
             _employeeContext.SaveChanges();
             return emp;
         }
@@ -65,7 +81,24 @@ namespace EmployeeDemo.Services
                 emp.Ename = employee.Ename;
                 emp.Email = employee.Email;
                 emp.Department = employee.Department;
+                if (employee.Department.ToString() == "HR")
+                {
+                    emp.DeptId = 1;
+                }
+                if (employee.Department.ToString() == "Finance")
+                {
+                    emp.DeptId = 2;
+                }
+                if (employee.Department.ToString() == "IT")
+                {
+                    emp.DeptId = 3;
+                }
+                if (employee.Department.ToString() == "QA")
+                {
+                    emp.DeptId = 4;
+                }
             }
+            
             _employeeContext.SaveChanges();
             return emp;
         }

@@ -1,12 +1,10 @@
 ﻿@model EmployeeDemo.Models.Employee
 <!DOCTYPE html>
 
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>CreateEmployee</title>
-</head>
-<body>
+@{ 
+    Layout = "_Layout";
+    ViewBag.Title = "Create Employee";
+}
     <form asp-action="createEmployee" method="post">
         <div>
             <label asp-for="Ename"></label>
@@ -28,5 +26,4 @@
             <button type="submit">Create Employee</button>
         </div>
     </form>
-</body>
-</html>
+

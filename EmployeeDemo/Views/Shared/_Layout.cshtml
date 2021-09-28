@@ -1,0 +1,44 @@
+﻿
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    <link rel="stylesheet" type="text/css" href="~/css/StyleSheet.css" />
+    <style>
+        table {
+            font-family: arial, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        td, th {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+        }
+
+        tr:nth-child(even) {
+            background-color: #dddddd;
+        }
+    </style>
+</head>
+<body>
+    <h1>Employee Data</h1>
+    <nav>
+        <div>
+        <a href="/Employee/AllEmployees">Model Employees</a>
+            </div>
+        <div>
+        <a href="/Employee/CreateEmployee">Add Employee</a>
+        </div>
+        <div>
+            <a href="/Home/About">About Us</a>
+        </div>
+    </nav>
+   
+        @RenderBody();
+   
+</body>
+</html>
